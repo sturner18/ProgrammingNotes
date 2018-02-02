@@ -3,7 +3,7 @@ period = "B"
 # parameters are inputs to the function
 # they are assigned locally
 
-def hello(name):
+def hello(name = "Parker"):
     '''
     says hello to the name
     :param name:
@@ -22,4 +22,6 @@ def product_sum(n1, n2):
     sum = n1+ n2
     return product, sum
 
-print(product_sum(4,5))
+if __name__ == "__main__":
+    hello("B period")
+    print(product_sum(4,5))

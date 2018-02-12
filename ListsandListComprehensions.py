@@ -86,3 +86,34 @@ del my_list[0]
 print(my_list)
 del my_list[1:3]
 print(my_list)
+
+# Iterating
+# For each loop - cannot change the list within this method
+for item in my_numlist:
+    item *= 2
+    print(item)
+
+print(my_numlist)
+
+# Index variable loop
+for i in range(len(my_numlist)):
+    my_numlist[i] *= 2
+    print(my_numlist[i])
+
+print(my_numlist)
+
+# CREATING LISTS
+# Make a list of number 1 to 100
+my_list = []
+for i in range(1, 101):
+    my_list.append(i)
+
+print(my_list)
+
+# Go back through the list and square everything
+for i in range(len(my_list)):
+    my_list[i] **= 2
+    print(my_list[i])
+
+print(my_list)
+

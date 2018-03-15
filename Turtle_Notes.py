@@ -1,43 +1,40 @@
 import turtle
 
 my_turtle = turtle.Turtle()
-my_turtle.showturtle()
-my_turtle.shape("turtle")
 my_turtle.speed(0)
-
+my_turtle.shape("turtle")
+my_turtle.showturtle()
 my_screen = turtle.Screen()
 my_screen.bgcolor('white')
 
-# draw a shape using goto
-my_turtle.fillcolor("red")
-my_turtle.begin_fill() # starts a shape to fill in
+my_turtle.width(2)
+my_turtle.fillcolor("red")  # also pencolor
+my_turtle.begin_fill() # starting a new object we will fill in
 my_turtle.goto(200, 0)
 my_turtle.goto(200, 200)
 my_turtle.goto(0, 200)
 my_turtle.goto(0, 0)
-my_turtle.end_fill()  # end of shape
+my_turtle.end_fill()
 
-# pick up the turtle
-my_turtle.up()
-my_turtle.goto(200, 200)
+my_turtle.up()  # picking the pencil up
+my_turtle.goto(200,200)
+my_turtle.down() # put pencil down
 
-my_turtle.down()
-my_turtle.fillcolor("blue")
+my_turtle.fillcolor("darkblue")
 my_turtle.begin_fill()
-my_turtle.goto(300, 300)
-my_turtle.goto(300, 200)
+my_turtle.goto(250, 250)
+my_turtle.goto(250, 200)
 my_turtle.goto(200, 200)
 my_turtle.end_fill()
 
-# draw using headings
 my_turtle.up()
 my_turtle.goto(0, 0)
 my_turtle.down()
-my_turtle.width(4)  # width in pixels
 
+# move with headings
 my_turtle.fillcolor("yellow")
 my_turtle.begin_fill()
-my_turtle.forward(100)
+my_turtle.forward(100)  # backward is also an option
 my_turtle.setheading(90)
 my_turtle.forward(100)
 my_turtle.setheading(180)
@@ -46,40 +43,33 @@ my_turtle.setheading(270)
 my_turtle.forward(100)
 my_turtle.end_fill()
 
-my_turtle.fillcolor("green")
-my_turtle.begin_fill()
-for i in range(6):
-    my_turtle.right(60)
-    my_turtle.forward(100)
-my_turtle.end_fill()
+
+my_turtle.right(30)
+my_turtle.forward(100)
+my_turtle.left(30)
+my_turtle.forward(100)
+
+# Recursive rectangle pattern
 
 
-# Rectangle recursive pattern
 my_screen.clear()
-
-
-my_turtle.home()
-
 
 def recursive_rect(width, height, depth):
     if depth > 0:
         my_turtle.up()
-        my_turtle.goto(width / 2, height / 2)
+        my_turtle.goto(width, height)
         my_turtle.down()
-        my_turtle.goto(width / 2, -height / 2)
-        my_turtle.goto(-width / 2, -height / 2)
-        my_turtle.goto(-width / 2, height / 2)
-        my_turtle.goto(width / 2, height / 2)
-        recursive_rect(width / 2, height / 2, depth - 1)
+        my_turtle.goto(width, -height)
+        my_turtle.goto(-width, -height)
+        my_turtle.goto(-width, height)
+        my_turtle.goto(width, height)
+        recursive_rect(width * 1.5, height * 1.5, depth - 1)
 
-my_turtle.width(2)
-recursive_rect(1000, 600, 10)
+recursive_rect(5, 8, 10)
 
 my_screen.clear()
 
 
-# Recursive Fractal (ncaa)
-import random
 def recursive_ncaa(x, y, size, depth):
     if depth > 0:
         my_turtle.up()
@@ -88,12 +78,14 @@ def recursive_ncaa(x, y, size, depth):
         my_turtle.goto(x + size, y)
         my_turtle.goto(x + size, y + size / 2)
         my_turtle.goto(x + size, y - size / 2)
-        size = random.random() * size
-        recursive_ncaa(x + size, y + size, size, depth - 1)
-        recursive_ncaa(x + size, y - size, size, depth - 1)
+        recursive_ncaa(x + size, y + size / 2, size / 2, depth - 1)
+        recursive_ncaa(x + size, y - size / 2, size / 2, depth - 1)
+
+recursive_ncaa(-300, 0, 300, 7)
+
+# my_turtle.hideturtle()  # opposite of showturtle
+# my_turtle.xcor()  and ycor()   # x, y positions
 
 
-recursive_ncaa(-300, 0, 250, 7)
+my_screen.exitonclick()  # end of program
 
-
-my_screen.exitonclick()

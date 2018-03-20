@@ -21,3 +21,4 @@ plt.title('Example Plot', color='blue', fontsize=30)
 plt.axis([1, 10, 10, 100]) # x min, x max, y min, y max
 
 plt.show()
+

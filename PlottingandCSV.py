@@ -58,10 +58,12 @@ hp_data = data[library_names.index('Humboldt Park')] [1:-1]
 hp_data = [int(x) for x in hp_data]
 print(hp_data)
 
-plt.figure(2)
+plt.figure(2, tight_layout=True)
 
-plt.plot(month_numbers, bwp_data)
-plt.plot(month_numbers, lp_data)
-plt.plot(month_numbers, hp_data)
+plt.plot(month_numbers, bwp_data, label="Bucktown-Wicker Park")
+plt.plot(month_numbers, lp_data, label="Humboldt Park")
+plt.plot(month_numbers, hp_data, label="Lincoln Park")
+plt.xticks(month_numbers, month_names, rotation=45)
 
+plt.legend(bbox_to_anchor=(0, 1), loc="upper left")
 plt.show()

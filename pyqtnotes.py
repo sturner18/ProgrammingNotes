@@ -13,8 +13,20 @@ class Window(QWidget):
 
         # make our widgets
         label1 = QLabel("label1", self) # text to display, widget to display to
+        grid.addWidget(label1, 1, 1, 1, 1) # row, col, row_span, col_span
+
+        button1 = QPushButton("button1", self)
+        grid.addWidget(button1, 1, 2, 1, 1)
+
+        lcd = QLCDNumber(self)
+        grid.addWidget(lcd, 2, 1, 1, 2)
+
+        slider = QSlider(Qt.Horizontal, self)
+        slider.setValue(50)
+        grid.addWidget(slider, 3, 1, 1, 2)
 
         # set up signals and slots
+        button1.clicked.connect(lambda: label1.setText("Clicked!"))
 
         # draw the app
         self.show()

@@ -19,14 +19,38 @@ class Window(QWidget):
         grid.addWidget(button1, 1, 2, 1, 1)
 
         lcd = QLCDNumber(self)
+        lcd.display(50)
         grid.addWidget(lcd, 2, 1, 1, 2)
 
         slider = QSlider(Qt.Horizontal, self)
         slider.setValue(50)
         grid.addWidget(slider, 3, 1, 1, 2)
 
+        combobox = QComboBox(self)
+        grid.addWidget(combobox, 4, 1, 1, 1)
+        combobox.addItems(["Beck", "Nathan", "Olivia"])
+
+        checkbox = QCheckBox(self)
+        grid.addWidget(checkbox, 4, 2, 1, 1)
+
+        textline = QLineEdit(self)
+        grid.addWidget(textline, 5, 1, 1, 1)
+
+        multiline = QTextEdit(self)
+        grid.addWidget(multiline, 5, 2, 1, 1)
+
+        calender = QCalendarWidget(self)
+        grid.addWidget(calender, 6, 1, 1, 1)
+
         # set up signals and slots
         button1.clicked.connect(lambda: label1.setText("Clicked!"))
+        slider.valueChanged.connect(lcd.display)
+        checkbox.stateChanged.connect(self.box_checked)
+        multiline.textChanged.connect(lambda: print("Changed"))
+        combobox.currentTextChanged.connect(lambda: print(combobox.currentText()))
+        
+    def box_checked(self):
+        print("Box checked!")
 
         # draw the app
         self.show()

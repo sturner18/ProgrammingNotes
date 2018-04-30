@@ -48,7 +48,7 @@ class Window(QWidget):
         checkbox.stateChanged.connect(self.box_checked)
         multiline.textChanged.connect(lambda: print("Changed"))
         combobox.currentTextChanged.connect(lambda: print(combobox.currentText()))
-        
+
     def box_checked(self):
         print("Box checked!")
 
